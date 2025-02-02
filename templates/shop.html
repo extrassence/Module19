@@ -1,0 +1,23 @@
+{% extends 'menu.html' %}
+
+{% block header %}{{block.super}}{% endblock %}
+{% block navigation %}{{block.super}}{% endblock %}
+{% block main %}
+    <table>
+             <tr>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Стоимость</th>
+                <th>Купи!</th>
+            </tr>
+       {% for item in items %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.cost }}</td>
+                <td><button>Хочу!</button></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+{% block footer %}{{block.super}}{% endblock %}

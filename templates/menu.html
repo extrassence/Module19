@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Бухта добрых клыкарров</title>
+</head>
+<body>
+    <header>
+        {% block header %}
+        <h1>Бухта добрых клыкарров</h1>
+        <h2>Торговля игровыми ценностями</h2>
+        {% endblock %}
+    </header>
+    <nav>
+       {% block navigation %}
+        <ul>
+            <li><a href="{% url 'index4' %}"><button>Главная</button></a></li>
+            <li><a href="{% url 'shop4' %}"><button>Магазин</button></a></li>
+            <li><a href="{% url 'cart4' %}"><button>Корзина</button></a></li>
+        </ul>
+       {% endblock %}
+    </nav>
+    <main>
+        {% block main %}
+        Здесь основная часть страницы, этого текста видно быть не должно
+        {% endblock %}
+    </main>
+    <footer>
+        {% block footer %}
+        2025 год, Общество Добрых Клыкарров имени Весёлого Роджера
+        {% endblock %}
+    </footer>
+
+</body>
+</html>
