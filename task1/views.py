@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import UserRegister
-from .models import Game, Buyer
+from .models import Game, Buyer, News
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -48,6 +49,7 @@ def sign_up_by_html(request):
 
 
 def sign_up_by_django(request):
+    # Этот метод работает, но не используется в проекте (жалко удалять)
     users = ['Незнайка', 'Пончик', 'Торопыжка', 'Знайка', 'Пилюлькин']
     info = {}
 
@@ -94,7 +96,6 @@ def sign_up_by_django(request):
     return render(request, 'djangoform.html', {'form': form})
 
 
-# Create your views here.
 def index4(request):
     return render(request, 'index.html')
 
@@ -107,3 +108,12 @@ def shop4(request):
 
 def cart4(request):
     return render(request, 'cart.html')
+
+
+def news4(request):
+    news = News.objects.all()
+    paginator = Paginator(news, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'news': page_obj}
+    return render(request, 'news.html', context)
